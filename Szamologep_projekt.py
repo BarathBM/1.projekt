@@ -12,6 +12,8 @@ eredmeny.grid(row=0, column=0, columnspan=4)
 btn1=Button(root,text="1",height=10,width=20).grid(row=1,column=0,sticky=W)
 btn2=Button(root,text="2",height=10,width=20).grid(row=1,column=1,sticky=W)
 btn3=Button(root,text="3",height=10,width=20).grid(row=1,column=2,sticky=W)
+ossze =Button(root, text="+", width=5, height=2,command="+")
+ossze.grid(row=1, column=4)
 
 btn4=Button(root,text="4",height=10,width=20).grid(row=2,column=0,sticky=W)
 btn5=Button(root,text="5",height=10,width=20).grid(row=2,column=1,sticky=W)
