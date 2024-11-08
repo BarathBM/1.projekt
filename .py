@@ -12,10 +12,10 @@ class Calculator(tk.Tk):
         
         self.create_widgets()
 
-    def create_widgets(self):
+    def create_widgets(num):
         # Kijelző (Label)
-        self.result_label = tk.Label(self, text="", height=2, font=("Arial", 24), anchor="e", padx=10)
-        self.result_label.grid(row=0, column=0, columnspan=4)
+        num.result_label = tk.Label(num, text="", height=2, font=("Arial", 24), anchor="e", padx=10)
+        num.result_label.grid(row=0, column=0, columnspan=4)
 
         # Számgombok
         buttons = [
@@ -48,7 +48,7 @@ class Calculator(tk.Tk):
         # Clear gomb
         clear_button = tk.Button(self, text="C", font=("Arial", 18), width=5, height=2,
                                  command=self.clear)
-        clear_button.grid(row=0, column=3)
+        clear_button.grid(row=4, column=0)
 
     def append_number(self, num):
         self.current_input += num
