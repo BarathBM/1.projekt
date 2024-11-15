@@ -6,8 +6,8 @@ root.title("Számológép")    #ablak elnevezése
 root.geometry("350x250")    #ablak mérete
 
 # Label, ami mutatja az utolsó bevitt számot vagy az eredményt
-display = tk.Label(root,text="0",width=16,height=2,anchor="e",font=("Arial",24))
-display.grid(row=0,column=0,columnspan=4)
+kep = tk.Label(root,text="0",width=16,height=2,anchor="e",font=("Arial",24))
+kep.grid(row=0,column=0,columnspan=4)
 
 # Globális változók
 input = ""  # A jelenlegi szám vagy művelet
@@ -23,7 +23,7 @@ def button_click(number):
         input = str(number)
     else:
         input += str(number)
-    display.config(text=input)
+    kep.config(text=input)
 
 # Törlés gomb (Clear)
 def clear():
@@ -31,7 +31,7 @@ def clear():
     input = ""
     elsoszam = None
     muvelet = ""
-    display.config(text="0")
+    kep.config(text="0")
 
 # Művelet kiválasztása (pl. +, -, *, /)
 def set_operation(muv):
@@ -40,7 +40,7 @@ def set_operation(muv):
         elsoszam  = float(input)  # Az első szám mentése
         input = ""
     muvelet = muv
-    display.config(text=input)
+    kep.config(text=input)
 
 # Eredmény kiszámítása
 def calculate():
@@ -48,17 +48,17 @@ def calculate():
     if muvelet and elsoszam  is not None:
         masodikszam = float(input)
         if muvelet == "+":
-            result = elsoszam  + masodikszam   #összeadás
+            eredmeny = elsoszam  + masodikszam   #összeadás
         elif muvelet == "-":
-            result = elsoszam  - masodikszam   #kivonás
+            eredmeny = elsoszam  - masodikszam   #kivonás
         elif muvelet == "*":
-            result = elsoszam  * masodikszam   #szorzás
+            eredmeny = elsoszam  * masodikszam   #szorzás
         elif muvelet == "/":
             if masodikszam != 0:
-                result = elsoszam  / masodikszam   #osztás
+                eredmeny = elsoszam  / masodikszam   #osztás
             else:
                 result = "Hiba: 0 osztó"    #0-val osztás nem lehet
-        display.config(text=str(result))
+        kep.config(text=str(eredmeny))
         elsoszam  = None
         input = str(result)
         muvelet = ""
