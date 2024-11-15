@@ -46,16 +46,16 @@ def set_operation(muv):
 def calculate():
     global elsoszam , input, muvelet
     if muvelet and elsoszam  is not None:
-        second_number = float(input)
+        masodikszam = float(input)
         if muvelet == "+":
-            result = elsoszam  + second_number   #összeadás
+            result = elsoszam  + masodikszam   #összeadás
         elif muvelet == "-":
-            result = elsoszam  - second_number   #kivonás
+            result = elsoszam  - masodikszam   #kivonás
         elif muvelet == "*":
-            result = elsoszam  * second_number   #szorzás
+            result = elsoszam  * masodikszam   #szorzás
         elif muvelet == "/":
-            if second_number != 0:
-                result = elsoszam  / second_number   #osztás
+            if masodikszam != 0:
+                result = elsoszam  / masodikszam   #osztás
             else:
                 result = "Hiba: 0 osztó"    #0-val osztás nem lehet
         display.config(text=str(result))
