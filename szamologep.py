@@ -37,7 +37,7 @@ def clear():
 def set_operation(muv):
     global elsoszam , input, muvelet
     if elsoszam  is None:
-        elsoszam  = float(input)  # Az első szám mentése
+        elsoszam  = int(input)  # Az első szám mentése
         input = ""
     muvelet = muv
     kep.config(text=input)
@@ -46,7 +46,7 @@ def set_operation(muv):
 def calculate():
     global elsoszam , input, muvelet
     if muvelet and elsoszam  is not None:
-        masodikszam = float(input)
+        masodikszam = int(input)
         if muvelet == "+":
             eredmeny = elsoszam  + masodikszam   #összeadás
         elif muvelet == "-":
@@ -57,10 +57,10 @@ def calculate():
             if masodikszam != 0:
                 eredmeny = elsoszam  / masodikszam   #osztás
             else:
-                result = "Hiba: 0 osztó"    #0-val osztás nem lehet
+                eredmeny = "Hiba: 0 osztó"    #0-val osztás nem lehet
         kep.config(text=str(eredmeny))
         elsoszam  = None
-        input = str(result)
+        input = str(eredmeny)
         muvelet = ""
 
 # Gombok létrehozása
