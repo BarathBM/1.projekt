@@ -10,7 +10,7 @@ display = tk.Label(root,text="0",width=16,height=2,anchor="e",font=("Arial",24))
 display.grid(row=0,column=0,columnspan=4)
 
 # Globális változók
-current_input = ""  # A jelenlegi szám vagy művelet
+input = ""  # A jelenlegi szám vagy művelet
 muvelet = ""  # Az aktuális művelet (+, -, *, /)
 elsoszam = None  # Az első szám tárolása a műveletekhez
 
@@ -18,35 +18,35 @@ elsoszam = None  # Az első szám tárolása a műveletekhez
 
 # Számgombok kezelésére
 def button_click(number):
-    global current_input
-    if current_input == "0":
-        current_input = str(number)
+    global input
+    if input == "0":
+        input = str(number)
     else:
-        current_input += str(number)
-    display.config(text=current_input)
+        input += str(number)
+    display.config(text=input)
 
 # Törlés gomb (Clear)
 def clear():
-    global current_input, elsoszam, muvelet
-    current_input = ""
+    global input, elsoszam, muvelet
+    input = ""
     elsoszam = None
     muvelet = ""
     display.config(text="0")
 
 # Művelet kiválasztása (pl. +, -, *, /)
 def set_operation(muv):
-    global elsoszam , current_input, muvelet
+    global elsoszam , input, muvelet
     if elsoszam  is None:
-        elsoszam  = float(current_input)  # Az első szám mentése
-        current_input = ""
+        elsoszam  = float(input)  # Az első szám mentése
+        input = ""
     muvelet = muv
-    display.config(text=current_input)
+    display.config(text=input)
 
 # Eredmény kiszámítása
 def calculate():
-    global elsoszam , current_input, muvelet
+    global elsoszam , input, muvelet
     if muvelet and elsoszam  is not None:
-        second_number = float(current_input)
+        second_number = float(input)
         if muvelet == "+":
             result = elsoszam  + second_number   #összeadás
         elif muvelet == "-":
@@ -59,8 +59,8 @@ def calculate():
             else:
                 result = "Hiba: 0 osztó"    #0-val osztás nem lehet
         display.config(text=str(result))
-        first_number = None
-        current_input = str(result)
+        elsoszam  = None
+        input = str(result)
         muvelet = ""
 
 # Gombok létrehozása
