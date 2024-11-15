@@ -1,0 +1,1 @@
+Szamológép szerintünk
