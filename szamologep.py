@@ -1,12 +1,15 @@
 import tkinter as tk
+import tkinter.font as tkFont
 
 # Ablak létrehozása
 root = tk.Tk()
 root.title("Számológép")    #ablak elnevezése
-root.geometry("500x350")    #ablak mérete
+root.geometry("1100x700")    #ablak mérete
+btnfont=tkFont.Font(family="Helvetica", size=20, weight="bold")
+kepfont=tkFont.Font(family="Arial", size=30, weight="bold")
 
 # Label, ami mutatja az utolsó bevitt számot vagy az eredményt
-kep = tk.Label(root, text="0", width=16, height=2, anchor="e", font=("Arial", 24))
+kep = tk.Label(root, text="0",justify="right", height=2,width=43 ,anchor="e", font=kepfont,background="white", padx=15,borderwidth=5,relief="groove")
 kep.grid(row=0, column=0, columnspan=4)
 
 # Globális változók
@@ -57,7 +60,7 @@ def calculate():
             if masodikszam != 0:
                 eredmeny = elsoszam / masodikszam  # osztás
             else:
-                eredmeny = "Hiba: 0 osztó"  # 0-val való osztás nem engedélyezett
+                eredmeny = "Hiba"  # 0-val való osztás nem engedélyezett
         kep.config(text=str(eredmeny))  # Az eredményt megjelenítjük a kijelzőn
         elsoszam = None  # Töröljük az első számot
         input = str(eredmeny)  # Az inputot az eredményre állítjuk
@@ -77,20 +80,20 @@ buttons = [
 muveletek = [("+", 1, 3), ("-", 2, 3), ("*", 3, 3), ("/", 4, 3)]
 
 # Különleges gombok (Clear, =)
-c_button = tk.Button(root, text="C", width=15, height=3, command=clear)
+c_button = tk.Button(root,font=btnfont, text="C", width=15, height=3, command=clear)
 c_button.grid(row=4, column=0)
 
-eredm_button = tk.Button(root, text="=", width=15, height=3, command=calculate)
+eredm_button = tk.Button(root,font=btnfont, text="=", width=15, height=3, command=calculate)
 eredm_button.grid(row=4, column=2)
 
 # Számgombok hozzáadása a gridhez
 for (text, row, col) in buttons:
-    button = tk.Button(root, text=text, width=15, height=3, command=lambda szam=text: button_click(szam))
+    button = tk.Button(root,font=btnfont, text=text, width=15, height=3, command=lambda szam=text: button_click(szam))
     button.grid(row=row, column=col)
 
 # Műveleti gombok hozzáadása
 for (text, row, col) in muveletek:
-    button = tk.Button(root, text=text, width=15, height=3, command=lambda muv=text: set_operation(muv))
+    button = tk.Button(root,font=btnfont, text=text, width=15, height=3, command=lambda muv=text: set_operation(muv))
     button.grid(row=row, column=col)
 
 # A Tkinter eseménykezelő indítása
