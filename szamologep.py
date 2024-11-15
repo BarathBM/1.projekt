@@ -12,7 +12,7 @@ display.grid(row=0,column=0,columnspan=4)
 # Globális változók
 current_input = ""  # A jelenlegi szám vagy művelet
 muvelet = ""  # Az aktuális művelet (+, -, *, /)
-first_number = None  # Az első szám tárolása a műveletekhez
+elsoszam = None  # Az első szám tárolása a műveletekhez
 
 # Funkciók
 
@@ -27,35 +27,35 @@ def button_click(number):
 
 # Törlés gomb (Clear)
 def clear():
-    global current_input, first_number, muvelet
+    global current_input, elsoszam, muvelet
     current_input = ""
-    first_number = None
+    elsoszam = None
     muvelet = ""
     display.config(text="0")
 
 # Művelet kiválasztása (pl. +, -, *, /)
 def set_operation(muv):
-    global first_number, current_input, muvelet
-    if first_number is None:
-        first_number = float(current_input)  # Az első szám mentése
+    global elsoszam , current_input, muvelet
+    if elsoszam  is None:
+        elsoszam  = float(current_input)  # Az első szám mentése
         current_input = ""
     muvelet = muv
     display.config(text=current_input)
 
 # Eredmény kiszámítása
 def calculate():
-    global first_number, current_input, muvelet
-    if muvelet and first_number is not None:
+    global elsoszam , current_input, muvelet
+    if muvelet and elsoszam  is not None:
         second_number = float(current_input)
         if muvelet == "+":
-            result = first_number + second_number   #összeadás
+            result = elsoszam  + second_number   #összeadás
         elif muvelet == "-":
-            result = first_number - second_number   #kivonás
+            result = elsoszam  - second_number   #kivonás
         elif muvelet == "*":
-            result = first_number * second_number   #szorzás
+            result = elsoszam  * second_number   #szorzás
         elif muvelet == "/":
             if second_number != 0:
-                result = first_number / second_number   #osztás
+                result = elsoszam  / second_number   #osztás
             else:
                 result = "Hiba: 0 osztó"    #0-val osztás nem lehet
         display.config(text=str(result))
